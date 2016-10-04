@@ -1,0 +1,11 @@
+{
+  "name": "corefoo-nlp",
+  "version": "0.0.1",
+  "description": "",
+  "main": "corefoo-nlp.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Holdy/corefoo-nlp.git"
+  },
+  "license": "MIT"
+}
