@@ -1,6 +1,6 @@
 {
   "name": "corefoo-nlp",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "",
   "main": "corefoo-nlp.js",
   "repository": {
@@ -8,6 +8,9 @@
     "url": "git+https://github.com/Holdy/corefoo-nlp.git"
   },
   "license": "MIT",
+  "devDependencies": {
+    "mocha": "3.2.x"
+  },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   }
