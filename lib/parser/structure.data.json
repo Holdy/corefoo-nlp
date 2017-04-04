@@ -1,0 +1,9 @@
+{"id": "root",
+  "subs": [
+    { "id": "assigned",
+      "subs": [
+        {"id": "awarded"}
+      ]
+    }
+  ]
+}
