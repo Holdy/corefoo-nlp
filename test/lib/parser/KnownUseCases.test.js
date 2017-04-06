@@ -37,8 +37,9 @@ describe('Known use cases', function() {
 
     it('should process - who is on prs', function(done) {
         var parseTree = process('who is on prs');
-        // check implied
+        // check implied date.
         //TODO should be isQuery=true
+
         var date = fetch.dataType.date(parseTree);
         expect(date instanceof Date).to.be.ok;
         done();

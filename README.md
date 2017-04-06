@@ -81,3 +81,27 @@ The phrase "on a hill" now belongs to "I". It could, arguably belong to "saw" if
 This is the same structure as 1. but now the man is in danger! The difference would be in the semantic meaning given to the verb "saw".
 
 
+"Who is processing incoming-orders today?"
+```
+   C: "Who"
+      S: "Is processing"
+         C: "incoming-orders"
+         S: timescale
+            C: "today"
+```
+You could argue that 'today' belongs to 'incoming orders' because we are talking about today's orders.
+But really its a timescale of the allocation - thus it sits below 'is processing'.
+If the phrase was shortened to 'who is processing today' - 'today' obviously belongs to 'processing'.
+
+This becomes important if the incoming orders are from yesterday:
+"Who is processing yesterday's incoming-orders today?"
+```
+   C: "Who"
+      S: "Is processing"
+         C: "incoming orders"
+            S: timescale
+               C: "Yesterday"
+         S: timescale
+            S: "Today"
+```
+
