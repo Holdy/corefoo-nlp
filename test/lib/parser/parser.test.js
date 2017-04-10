@@ -51,7 +51,6 @@ describe('NLP Parser - treeBuilder', function() {
         }
     }
 
-
     it('should handle - who is online', function(done) {
         var inputText = 'who is online';
         var result = process(inputText);
@@ -60,8 +59,8 @@ describe('NLP Parser - treeBuilder', function() {
         expect(nodeCount(result)).to.equal(5);
 
         check(result, false, ['who'], 1);
-        check(result.children[0], true, ['is'], 1);
-        check(result.children[0].children[0], false, ['online'], 1);
+        check(result.children[0], true, ['is'], 2);
+        check(result.children[0].children[0], false, ['online'], 0);
 
         done();
     });
@@ -75,8 +74,8 @@ describe('NLP Parser - treeBuilder', function() {
         expect(nodeCount(result)).to.equal(5);
 
         check(result, false, ['who'], 1);
-        check(result.children[0], true, ['is'], 1);
-        check(result.children[0].children[0], false, ['online'], 1);
+        check(result.children[0], true, ['is'], 2); //second child is default timeframe.
+        check(result.children[0].children[0], false, ['online'], 0);
 
         done();
     });
@@ -87,8 +86,8 @@ describe('NLP Parser - treeBuilder', function() {
         var result = process(inputText);
         expect(result).to.be.ok;
         check(result, isContent, ['what'], 1);
-        check(result.children[0], isStructure, ['happens'], 1);
-        check(result.children[0].children[0], isContent, ['when', 'i', 'die'], 1);
+        check(result.children[0], isStructure, ['happens'], 2);
+        check(result.children[0].children[0], isContent, ['when', 'i', 'die'], 0);
 
         done();
     });
@@ -100,8 +99,8 @@ describe('NLP Parser - treeBuilder', function() {
         expect(result).to.be.ok;
 
         check(result, isContent, ['who'], 1);
-        check(result.children[0], isStructure, ['likes'], 1);
-        check(result.children[0].children[0], isContent, ['cheese'], 1);
+        check(result.children[0], isStructure, ['likes'], 2);
+        check(result.children[0].children[0], isContent, ['cheese'], 0);
 
         done();
     });
@@ -189,9 +188,9 @@ describe('NLP Parser - treeBuilder', function() {
         expect(nodeCount(result)).to.equal(5);
 
         check(result, false, ['who'], 1);
-        check(result.children[0], true, ['is', 'on'], 1);
-        expect(result.children[0].prog).to.equal('assigned-to');
-        check(result.children[0].children[0], false, ['prs'], 1);
+        check(result.children[0], true, ['is', 'on'], 2);
+        expect(result.children[0].codeKey).to.equal('assigned-to');
+        check(result.children[0].children[0], false, ['prs'], 0);
 
         done();
     });
@@ -204,9 +203,9 @@ describe('NLP Parser - treeBuilder', function() {
         expect(nodeCount(result)).to.equal(5);
 
         check(result, false, ['who'], 1);
-        check(result.children[0], true, ['is', 'on'], 1);
-        expect(result.children[0].prog).to.equal('assigned-to');
-        check(result.children[0].children[0], false, ['pull', 'requests'], 1);
+        check(result.children[0], true, ['is', 'on'], 2);
+        expect(result.children[0].codeKey).to.equal('assigned-to');
+        check(result.children[0].children[0], false, ['pull', 'requests'], 0);
 
         done();
     });
@@ -319,8 +318,8 @@ describe('NLP Parser - treeBuilder', function() {
         expect(result).to.be.ok;
         expect(nodeCount(result)).to.equal(4);
 
-        check(result, true, ['play'], 1);
-        check(result.children[0], false, ['the','barking','dog'], 1);
+        check(result, true, ['play'], 2);
+        check(result.children[0], false, ['the','barking','dog'], 0);
 
         done();
     });

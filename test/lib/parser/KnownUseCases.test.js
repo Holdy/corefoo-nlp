@@ -16,9 +16,28 @@ describe('Known use cases', function() {
         return parseResult.intentTree;
     }
 
+    function nodeCount(item) {
+        return 1 + childCount(item);
+    }
+
+    function childCount(item) {
+        var children = item.children;
+        if (children) {
+            var result = 0;
+            children.forEach(function(child) {
+                result += nodeCount(child);
+            });
+            return result;
+        } else {
+            return 0;
+        }
+    }
+
     it('should process - prs', function(done) {
         var parseResult = parser.parse('prs');
         var intentTree = parseResult.intentTree;
+
+        expect(nodeCount(intentTree)).to.equal(3);
 
         //default today
         check(intentTree, false, ['prs'], 1);
@@ -47,7 +66,10 @@ describe('Known use cases', function() {
 
     it('should process - who is on prs today', function(done) {
         var parseTree = process('who is on prs today');
-        // explicit today
+        // TODO explicit today
+
+        expect(nodeCount(parseTree)).to.equal(5);
+
         done();
     });
 
